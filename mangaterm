@@ -1,0 +1,107 @@
+#!/bin/sh
+
+#using PID for dirname in case multiple instances are opened they do not interfere
+CACHEDIR="$HOME/.cache/mangaterm"
+TMPDIR="$CACHEDIR/$$"
+
+# read_char var
+# from: https://stackoverflow.com/a/30022297
+read_char() {
+    stty -icanon -echo
+    eval "$1=\$(dd bs=1 count=1 2>/dev/null)"
+    stty icanon echo
+}
+
+help() {
+    echo "Read manga/comics/pdfs in the terminal"
+    echo "    mangaterm.sh DIRECTORY"
+    echo "    mangaterm.sh FILE"
+    echo ""
+    echo "    --help   show this help menu" 
+    echo ""
+    echo "keybindings:"
+    echo "    j -> next page"
+    echo "    k -> previous page"
+    echo "    q -> quit"
+    echo ""
+    exit
+}
+
+disp() {
+    FILE="$DIR"/"$(echo "$FILES" | head -n "$1" | tail -n 1)" 
+    clear
+    [ -f "$FILE" ] && chafa -C on "$FILE"
+
+    printf "%s" "$FILE"
+}
+
+close() {
+    rm -rf "$TMPDIR"
+    clear
+    exit
+}
+
+readDir() {
+    DIR="$(echo "$1" | xargs)"
+
+    #if opening an archive that created a subdirectory, open subdirectories until there are multiple files
+    SDIR="$(ls -A "$DIR")"
+    if [ "$(echo "$SDIR" | wc -l)" = "1" ]; then
+        if [ -d "$DIR/$SDIR" ]; then  
+            readDir "$DIR"/"$SDIR" 
+        fi
+    fi
+
+    FILES="$(ls "$DIR")"
+    LEN="$(echo "$FILES" | wc -l)"
+
+    disp "1"
+
+    I=1
+    while read_char char; do
+        if [ "$char" = "j" ]; then
+                I=$((I + 1))
+            elif [ "$char" = "k" ]; then
+                I=$((I - 1))
+            elif [ "$char" = "q" ]; then
+                close
+            fi
+
+        if [ "$I" -ge "$LEN" ] || [ "$I" -le "0" ]; then
+            if [ "$I" -ge "$LEN" ]; then
+                I="$LEN"
+            elif [ "$I" -le "0" ]; then
+                I=0
+            fi 
+        fi
+
+        disp "$I" 
+    done
+
+    close
+}
+
+handleFile() {
+    case $(file --mime-type "$1" -b) in
+        inode/directory) readDir "$1" ;; 
+        application/zip) unzip "$1" -d "$TMPDIR" && readDir "$TMPDIR" ;; 
+        application/*rar) 7z x "$1" -o"$TMPDIR" && readDir "$TMPDIR" ;;
+        application/gzip) tar xzvf "$1" --directory="$TMPDIR" && readDir "$TMPDIR" ;;
+        application/pdf) pdftoppm -jpeg "$1" "$TMPDIR"/page && readDir "$TMPDIR" ;;
+        *) help ;;
+
+    esac
+}
+
+trap 'close' 2
+trap 'close' 15 
+
+[ "$1" = "--help" ] && help
+
+mkdir -p "$TMPDIR"
+
+if [ "$(echo "$1" | cut -c1-1)" = "-" ]; then
+   foot -e mangaterm "$2" 2>/dev/null > /dev/null
+fi
+
+handleFile "$1"

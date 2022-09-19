@@ -1,0 +1,46 @@
+#!/usr/bin/env sh
+#===================
+#TODO:
+#   + currently making /etc/hosts a symlink to a user owned file to allow script to run w/o sudo, possible security issue.
+#
+#FLAGS:
+# if $1 is -u then update files from internet
+#
+# ==================
+
+BLOCKFILE="$HOME/.config/blocklist"
+
+update() {
+    mkdir -p ~/.local/share/update_hosts
+    cd ~/.local/share/update_hosts
+
+    if [ ! -f "./.hosts.orig" ]; then
+        cp /etc/hosts ./.hosts.orig
+    fi
+
+    if [ "$1" = "-u" ]; then
+        
+        rm ./.swc_hosts
+        #get someonewhocares.org hosts file
+        curl https://someonewhocares.org/hosts/hosts -o ./.swc_hosts
+
+    fi
+
+    #curl https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts -o ./.sb_hosts
+
+    #[ -f "$BLOCKFILE" ] && echo "blocklist file found." && sed 's/^/127.0.0.1    /g' "$BLOCKFILE" > ./blocklist
+
+    #if [ -f "./blocklist" ]; then
+    #    cat ./.hosts.orig ./.swc_hosts ./.sb_hosts ./blocklist  > ./hosts
+    #else
+        cat ./.hosts.orig ./.swc_hosts  > ./hosts
+    #fi
+
+    #cat ./.hosts.orig ./.swc_hosts  > ./hosts
+
+    #sudo mv ./hosts /etc/
+    [ "$1" = "-u" ] && sudo rm /etc/hosts && sudo ln -s $HOME/.local/share/update_hosts/hosts /etc/ && exit
+}
+
+
+update "$1"

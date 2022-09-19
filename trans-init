@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+#sleep 30 
+[ ! -d ~/.cache/transmission ] && mkdir -p ~/.cache/transmission
+
+while [ ! -f  ~/.cache/transmission/bt_blocklists.gz ]; do
+    sleep 10
+    cd ~/.cache/transmission/
+    #curl -O -L  https://github.com/sahsu/transmission-blocklist/releases/download/1.0.0/blocklist.gz
+    #curl -O -L  https://github.com/sahsu/transmission-blocklist/releases/latest/download/blocklist.gz
+    curl -O -L https://github.com/Naunter/BT_BlockLists/raw/master/bt_blocklists.gz
+done
+
+gunzip ~/.cache/transmission/bt_blocklists.gz
+rm ~/.cache/transmission/bt_blocklists.gz
+
+if [ -f ~/.config/transmission-daemon/blocklists/bt_blocklists ]; then
+	rm ~/.config/transmission-daemon/blocklists/*
+fi
+
+mv ~/.cache/transmission/bt_blocklists ~/.config/transmission-daemon/blocklists/
+
+[ -z "$(pgrep transmission)" ] && transmission-daemon &

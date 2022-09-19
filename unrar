@@ -1,0 +1,30 @@
+#!/bin/sh
+# script acts as a basic wrapper for 7z for extracting .rar files
+# requires p7zip-rar , p7zip with rar archive support
+# not everything is implemented just x and l flags
+# $1 -> flag 
+# $2 -> archive file name ex: archive.rar
+# $3 -> (optional) directory to extract to
+
+
+if [ "$1" = "x" ]; then
+    if [ "$(echo "$2" | grep ".rar" )" ]; then
+        if [ -d "$3" ]; then
+            7z x "$2" -o"$3" 
+        else
+            7z x "$2" 
+        fi
+    fi
+    exit
+fi
+
+if [ "$1" = "l" ]; then
+    7z l "$2"
+    exit
+fi
+
+echo "This is a script that serves as a wrapper for 7z to use unrar commands."
+echo ""
+echo "unrar x file.rar                     --> extracts file to current directory"
+echo "unrar x file.rar /path/to/directory/ --> extracts file to specified directory" 
+echo "unrar l file.rar                     --> prints out contents of file to terminal"
