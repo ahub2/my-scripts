@@ -1,0 +1,17 @@
+had to remove some pkgs from base.list 
+
+only had to enable multilib in pacman.conf
+
+was prompted to replace jack2 which caused base.list install to not work
+
+removed grub update since using systemd boot
+
+commented out runit setup
+
+dont need to install: chronie, cronie?(systemd timers)
+
+#Remember for next install
+*make sure to enter in the kernel image names correctly (especially if using zen kernel)
+*for systemd boot for PARTUUID get this from blkid
+*remember to generate locales (locale-gen)
+
