@@ -6,7 +6,7 @@ setwp() {
     rm ~/.config/wall 
     cp "$1" "$HOME/.config/wall"
     swaymsg "output * bg ~/.config/wall fill"
-    swaybg --image "$HOME/.config/wall"
+    #swaybg --image "$HOME/.config/wall"
 }
 
 

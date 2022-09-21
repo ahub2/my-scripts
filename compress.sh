@@ -78,7 +78,7 @@ help () {
 
 #get all input except first argument, if first argument has a '-' and save in ARGS
 #ARGS="$( echo "$@" | sed 's/^-.* //g' )" 
-ARGS="$(echo "$2")"
+ARGS="$2"
 
 echo "ARGS = $ARGS"
 

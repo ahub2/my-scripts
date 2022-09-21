@@ -87,6 +87,7 @@ handleFile() {
         application/zip) unzip "$1" -d "$TMPDIR" && readDir "$TMPDIR" ;; 
         application/*rar) 7z x "$1" -o"$TMPDIR" && readDir "$TMPDIR" ;;
         application/gzip) tar xzvf "$1" --directory="$TMPDIR" && readDir "$TMPDIR" ;;
+        application/x-7z-compressed)  7z x "$1" -o"$TMPDIR" && readDir "$TMPDIR";;
         application/pdf) pdftoppm -jpeg "$1" "$TMPDIR"/page && readDir "$TMPDIR" ;;
         *) help ;;
 
