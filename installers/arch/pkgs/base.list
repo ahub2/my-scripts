@@ -83,4 +83,5 @@ flatpak
 waylock
 bemenu-wayland
 foot
+foot-terminfo
 libsixel
