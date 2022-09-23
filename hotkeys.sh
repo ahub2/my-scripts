@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+#add to autostart script to startup swhkd automatically/restart when login/logout
 
 run () {
     killall swhks
