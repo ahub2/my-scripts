@@ -216,7 +216,8 @@ configure() {
     cd -
 
     #set wallpaper
-    ln -s ~/media/img/wallpapers/alena-aenami-eclipse-1k.jpg ~/.config/wall 
+    #ln -s ~/media/img/wallpapers/alena-aenami-eclipse-1k.jpg ~/.config/wall 
+    ln -s /usr/share/backgrounds/archlinux/lone.jpg ~/.config/wall 
 
     #link Xresources for xwayland
     ln -s ~/.config/Xresources ~/.Xdefaults
