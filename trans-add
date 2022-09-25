@@ -1,0 +1,55 @@
+#!/usr/bin/env sh
+
+#to use remote option add to .profile:
+# export TRNS_IP=REMOTE TRANSMISSION IP
+
+ARGS="$@"
+IP="127.0.0.1"
+
+DIR="$TRNS_DL_DIR"
+
+help() {
+    echo "add a torrent to a currently running transmission-daemon, requires that transmission-daemon is running on this machine, or on a server, and that"
+    echo "    the current machine has the program transmission-remote installed. If using remote option, ensure the remote daemon config has your local machine's"
+    echo "    IP address added to it's whitelist"
+    echo ""
+    echo "    If adding a torrent locally (without -r), the script trans-init will be called to initialize the transmission-daemon on the local machine if it is not already running"
+    echo ""
+    echo "usage:"
+    echo "   trans-add URL                         -> add magnet link to transmission-daemon running on local machine"
+    echo "   trans-add -r URL                      -> add magnet link to transmission-daemon running on remote machine, IP address is defined by \$TRNS_IP environment variable"
+    echo "   trans-add -r URL path/to/directory/   -> add magnet link to transmission-daemon running on remote machine, set download dir to be path defined by \$TRNS_DL_DIR/path/to/directory"
+    echo "   trans-add URL path/to/directory/   -> add magnet link to transmission-daemon running on local machine, set download dir to be path defined by \$TRNS_DL_DIR/path/to/directory"
+    echo "   trans-add FILE                        -> add .torrent file to transmission-daemon running on local machine"
+    echo "   trans-add -r FILE                     -> add .torrent file to transmission-daemon running on remote machine"
+    echo "   trans-add -h                          -> display this help message"
+    echo ""
+
+    exit
+}
+
+
+[ "$#" = "0" ] && help
+[ "$1" = "-h" ] && help
+[ "$1" = "--help" ] && help
+
+if [ "$1" = "-r" ]; then
+    ARGS="$2"
+    IP="$TRNS_IP"
+    echo "============================="
+    echo "$ARGS"
+    echo "============================="
+    if [ "$3" ]; then
+        DIR="$DIR/$3"
+    fi
+
+else
+    trans-init
+
+    if [ "$2" ]; then
+        DIR="$DIR/$2"
+    fi
+fi
+
+RSP="$(transmission-remote "$IP":9091 -a "$ARGS" -w "$DIR" )"
+notify-send "trans-add remote:" "adding: $RSP"

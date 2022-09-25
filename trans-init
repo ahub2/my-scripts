@@ -6,8 +6,6 @@
 while [ ! -f  ~/.cache/transmission/bt_blocklists.gz ]; do
     sleep 10
     cd ~/.cache/transmission/
-    #curl -O -L  https://github.com/sahsu/transmission-blocklist/releases/download/1.0.0/blocklist.gz
-    #curl -O -L  https://github.com/sahsu/transmission-blocklist/releases/latest/download/blocklist.gz
     curl -O -L https://github.com/Naunter/BT_BlockLists/raw/master/bt_blocklists.gz
 done
 

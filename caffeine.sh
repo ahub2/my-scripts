@@ -2,7 +2,7 @@
 
 while : 
 do
-    echo "pressing shift key."
-    wtype -M shift -m shift
+    wtype -d 1000 caffeine 
+    wtype -d 1000 -k return 
     sleep 60
 done
