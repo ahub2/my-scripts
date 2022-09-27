@@ -36,9 +36,6 @@ help() {
 if [ "$1" = "-r" ]; then
     ARGS="$2"
     IP="$TRNS_IP"
-    echo "============================="
-    echo "$ARGS"
-    echo "============================="
     if [ "$3" ]; then
         DIR="$DIR/$3"
     fi
@@ -49,7 +46,8 @@ else
     if [ "$2" ]; then
         DIR="$DIR/$2"
     fi
+    IP="localhost"
 fi
 
 RSP="$(transmission-remote "$IP":9091 -a "$ARGS" -w "$DIR" )"
-notify-send "trans-add remote:" "adding: $RSP"
+notify-send "trans-add remote:" "adding: $RSP  to dir: $DIR"
