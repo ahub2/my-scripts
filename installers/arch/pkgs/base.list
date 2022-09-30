@@ -46,6 +46,7 @@ noto-fonts-emoji
 noto-fonts-cjk
 lxappearance
 qt5ct
+qt5-wayland
 imagemagick
 ffmpegthumbnailer
 python-pywal
