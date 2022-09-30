@@ -128,15 +128,15 @@ configure() {
     mkdir ~/docs/
     mkdir ~/dl/
     mkdir ~/media/
-    mkdir -p ~/.local/share/gnupg/
     mkdir -p ~/.config/mpd/playlists
+    mkdir -p ~/.local/share/gnupg/
     mkdir -p ~/.local/share/desktop
     mkdir -p ~/.local/share/wineprefixes/default
-
-    mkdir .local/share/public
-    mkdir .local/share/templates
-     mkdir media/audio
-     mkdir media/video
+    mkdir -p ~/.local/share/templates
+    mkdir -p ~/.local/share/public
+    mkdir -p ~/media/audio
+    mkdir -p ~/media/img
+    mkdir -p ~/media/video
 
     #setup ufw
     sudo ufw default deny incoming
