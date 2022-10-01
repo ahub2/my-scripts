@@ -101,6 +101,7 @@ depends=(
 "waylock"
 "foot"
 "foot-terminfo"
+"bemenu-wayland"
  )
 
 optdepends=()
