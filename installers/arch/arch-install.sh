@@ -88,17 +88,17 @@ wireless() {
 
 harden() {
     #install required programs
-    sudo pacman -S firejail apparmor
+    sudo pacman -S apparmor firejail
 
     #enable apparmor service
     sudo systemctl enable apparmor.service
     sudo systemctl start  apparmor.service
 
     #configure apparmor to use firejail and configure firejail to automatically run for supported programs
-    sudo apparmor_parser -r /etc/apparmor.d/firejail-default
-    sudo firecfg
+   sudo apparmor_parser -r /etc/apparmor.d/firejail-default
+   sudo firecfg
 
-    #add user to /etc/firejail/firejail.users if it is not already in the file
+    add user to /etc/firejail/firejail.users if it is not already in the file
     if [ -z "$(grep "$USER" /etc/firejail/firejail.users)" ]; then
         sudo sh -c "echo '$USER' >> /etc/firejail/firejail.users"
     fi
