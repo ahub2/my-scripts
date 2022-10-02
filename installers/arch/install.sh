@@ -107,15 +107,22 @@ configuration() {
 
 }
 
+
+#update repos
 sudo pacman -Syu
 
+#install meta package which installs most programs used in setup
+CDIR="$PWD"
+cd ./ajh-base/
 makepkg -si
+cd "$CDIR"
 
-#do any installation steps here
 echo "installing..."
 
+#setup systemd services
 systemd_setup
 
+#setup directories, configure ufw, setup zsh, etc.
 configuration
 
 clear
