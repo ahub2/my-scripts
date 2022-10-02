@@ -123,6 +123,11 @@ echo "Install wireless programs? (iwd bluez and tlp) (y/N)?"
 read input
 [ "$input" = "y" ] && wireless
 
+echo "installing AUR packages..."
+sh ./SCRIPTS/aur-install.sh
+echo "Done installing AUR packages."
+echo ""
+
 echo "installation complete."
 
 echo "optional extra installation scripts are located in ./SCRIPTS/ for setting up gaming, etc."

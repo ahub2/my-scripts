@@ -54,7 +54,7 @@ depends=(
 "python-pip"
 "shellcheck"
 "fakeroot"
-#"base-devel"
+"base-devel"
 
 #multimedia
 "pavucontrol"
