@@ -11,7 +11,6 @@ pfetch
 sysrq-enabler
 wlr-randr
 sfeed
-udiskie
 waylogout-git
 ani-cli-git
 connman-gtk
