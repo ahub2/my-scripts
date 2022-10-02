@@ -1,7 +1,7 @@
 pkgname="ajh-setup"
 pkgver="1.0.0"
 pkgver="1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Install my config for Arch based systems."
 arch=("x86_64")
 
@@ -53,8 +53,6 @@ depends=(
 "clang"
 "python-pip"
 "shellcheck"
-"fakeroot"
-"base-devel"
 
 #multimedia
 "pavucontrol"

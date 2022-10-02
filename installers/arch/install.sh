@@ -75,7 +75,6 @@ configuration() {
     chsh -s /bin/zsh "$USER"
 
     #setup .zprofile and zsh history file
-    cd ~ || return
     ln -s ~/.profile ~/.zprofile
     mkdir -p ~/.cache/zsh
     touch ~/.cache/zsh/history
@@ -108,6 +107,8 @@ configuration() {
 
 }
 
+sudo pacman -Syu
+
 makepkg -si
 
 #do any installation steps here
@@ -124,6 +125,7 @@ read input
 [ "$input" = "y" ] && wireless
 
 echo "installing AUR packages..."
+echo "$PWD"
 sh ./SCRIPTS/aur-install.sh
 echo "Done installing AUR packages."
 echo ""

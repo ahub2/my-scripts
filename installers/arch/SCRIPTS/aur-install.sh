@@ -26,6 +26,7 @@ wayland-idle-inhibitor-git
 tofi
 librewolf-bin"
 
+sudo pacman -S base-devel fakeroot
 
 mkdir -p "$YAY_INSTALL_DIR"
 git clone https://aur.archlinux.org/yay.git "$YAY_INSTALL_DIR" 
