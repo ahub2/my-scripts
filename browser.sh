@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-WBROWSER=chromium-wayland
+WBROWSER=librewolf
 
 
 #OPTS="             Torrent )

@@ -103,6 +103,7 @@ depends=(
 "foot"
 "foot-terminfo"
 "bemenu-wayland"
+"kanshi"
  )
 
 optdepends=()
