@@ -1,7 +1,7 @@
 pkgname="ajh-base"
 pkgver="1.0.0"
 pkgver="1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Install my config for Arch based systems."
 arch=("x86_64")
 
@@ -45,6 +45,7 @@ depends=(
 "zsh"
 "openssh"
 "flatpak"
+"jq"
 
 #libs/plugins
 "python-urwid"
@@ -72,6 +73,7 @@ depends=(
 "noto-fonts-cjk"
 "lxappearance"
 "qt5ct"
+"archlinux-wallpaper"
 
 #tui, terminal programs and programs/libs used by them
 "imagemagick"

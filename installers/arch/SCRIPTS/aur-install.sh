@@ -14,7 +14,6 @@ sfeed
 waylogout-git
 ani-cli-git
 connman-gtk
-opendoas-sudo
 shell-color-scripts
 lf-sixel-git
 nerd-fonts-mononoki
