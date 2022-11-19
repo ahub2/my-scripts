@@ -1,6 +1,6 @@
 #!/bin/sh
 
-YAY_INSTALL_DIR="$HOME/.local/src/"
+YAY_INSTALL_DIR="$HOME/.local/src/yay"
 
 aurprogs="mutt-wizard
 htim
@@ -22,7 +22,9 @@ cli-visualizer
 wob
 wayland-idle-inhibitor-git
 tofi
-librewolf-bin"
+librewolf-bin
+hyprland
+waybar-hyprland-git"
 
 sudo pacman -S base-devel fakeroot
 
