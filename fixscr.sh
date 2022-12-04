@@ -1,8 +1,8 @@
 #!/bin/sh
 
 RES="1920x1080"
-MON="VGA-1"
-LAPTOP="LVDS-1"
+MON="DP-7"
+LAPTOP="eDP-1"
 
 
 list_mons() {
