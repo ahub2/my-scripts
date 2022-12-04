@@ -1,7 +1,7 @@
 pkgname="ajh-base"
 pkgver="1.0.0"
 pkgver="1"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Install my config for Arch based systems."
 arch=("x86_64")
 
@@ -46,6 +46,7 @@ depends=(
 "openssh"
 "flatpak"
 "jq"
+"pamixer"
 
 #libs/plugins
 "python-urwid"
