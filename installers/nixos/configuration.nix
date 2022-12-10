@@ -4,11 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-<<<<<<< HEAD
-      ./gaming-configuration.nix
-=======
       #./gaming-configuration.nix
->>>>>>> tmp
       ./sway-configuration.nix
     ];
 
@@ -81,6 +77,8 @@
     	zathura
 	sfeed
     	chromium
+	brave
+	keepassxc
      ];
    };
 
@@ -116,6 +114,7 @@
     noto-fonts-extra
     noto-fonts-emoji
     noto-fonts-cjk-sans
+    nerdfonts
     zip
     unzip
     p7zip
@@ -156,7 +155,17 @@
     udiskie
     python3
     python3.pkgs.pip
+    chafa
       ];
+
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-extra
+    noto-fonts-emoji
+    noto-fonts-cjk-sans
+    nerdfonts
+
+  ];
 
   #enable flatpak
   services.flatpak.enable = true;
@@ -168,6 +177,8 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+
 
   services.pipewire.wireplumber.enable = true;
 

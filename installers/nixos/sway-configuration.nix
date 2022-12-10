@@ -3,8 +3,7 @@
   environment.systemPackages = with pkgs; [
   	wayland
   	sway
-	alacritty
-	swaylock
+	waylock
 	swayidle
 	grim
 	slurp
@@ -14,8 +13,10 @@
 	waybar
 	xwayland
 	gammastep
-	rofi-wayland
+	bemenu
 	imv
+	foot
+	autotiling
   ];
 
   # enable sway window manager
