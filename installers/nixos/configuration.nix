@@ -4,7 +4,11 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+<<<<<<< HEAD
       ./gaming-configuration.nix
+=======
+      #./gaming-configuration.nix
+>>>>>>> tmp
       ./sway-configuration.nix
     ];
 

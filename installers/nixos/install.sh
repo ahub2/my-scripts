@@ -14,12 +14,21 @@ mkdir -p ~/.cache/zsh
 touch ~/.cache/zsh/history
 
 
+<<<<<<< HEAD
 sh ~/.local/scripts/install.sh add-repos ~/.local/installers/nixos/repos.list
 
 
 #link rofi themes directory so that theming works
 mkdir -p "$HOME"/.local/share/rofi/
 ln -s "$HOME"/.local/src/base16-rofi/themes/ "$HOME"/.local/share/rofi/themes
+=======
+#sh ~/.local/scripts/install.sh add-repos ~/.local/installers/nixos/repos.list
+
+
+#link rofi themes directory so that theming works
+#mkdir -p "$HOME"/.local/share/rofi/
+#ln -s "$HOME"/.local/src/base16-rofi/themes/ "$HOME"/.local/share/rofi/themes
+>>>>>>> tmp
 
 
 
@@ -39,7 +48,11 @@ wget http://collapseos.org/files/collapseos-latest.tar.gz
 cd -
 
 #set wallpaper
+<<<<<<< HEAD
 ln -s ~/media/img/wallpapers/alena-aenami-eclipse-1k.jpg ~/.config/wall 
+=======
+#ln -s ~/media/img/wallpapers/alena-aenami-eclipse-1k.jpg ~/.config/wall 
+>>>>>>> tmp
 
 #link Xresources for xwayland
 ln -s ~/.config/Xresources ~/.Xdefaults
