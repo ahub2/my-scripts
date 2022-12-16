@@ -8,7 +8,7 @@ JSFN="$HOME/.cache/gs_geoclue.json"
 
 FN="$HOME/.cache/gs_geoclue.txt"
 
-curl -Ls https://ipapi.co/json > "$FN".tmp
+curl -Ls https://ipapi.co/json > "$JSFN".tmp
 
 #dont update file if error received, could also check if an error flag is present
 if [ "$(cat "$JSFN".tmp | wc -l)" -gt 4 ]; then
