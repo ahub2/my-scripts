@@ -22,9 +22,7 @@ cli-visualizer
 wob
 wayland-idle-inhibitor-git
 tofi
-librewolf-bin
-hyprland
-waybar-hyprland-git"
+sway-audio-idle-inhibit-git"
 
 sudo pacman -S base-devel fakeroot
 
