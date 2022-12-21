@@ -92,7 +92,7 @@ configuration() {
 
 #theming
     sudo sh -c 'echo "FONT=Lat2-Terminus16" >> /etc/vconsole.conf'
-    ln -s /usr/share/backgrounds/archlinux/lone.jpg ~/.config/wall 
+    ln -s /usr/share/backgrounds/archlinux/landscape.jpg ~/.config/wall 
     ln -s ~/.config/Xresources ~/.Xdefaults
 
 #download collapse OS if it is not already

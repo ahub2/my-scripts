@@ -22,7 +22,8 @@ cli-visualizer
 wob
 wayland-idle-inhibitor-git
 tofi
-sway-audio-idle-inhibit-git"
+sway-audio-idle-inhibit-git
+shellcheck-bin"
 
 sudo pacman -S base-devel fakeroot
 
