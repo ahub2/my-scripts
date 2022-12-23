@@ -2,28 +2,9 @@
 
 YAY_INSTALL_DIR="$HOME/.local/src/yay"
 
-aurprogs="mutt-wizard
-htim
-jmtpfs
-tremc-git
-dashbinsh
-pfetch
-sysrq-enabler
-wlr-randr
-sfeed
-waylogout-git
-ani-cli-git
-connman-gtk
-shell-color-scripts
-lf-sixel-git
-nerd-fonts-mononoki
-autotiling
-cli-visualizer
-wob
-wayland-idle-inhibitor-git
-tofi
-sway-audio-idle-inhibit-git
-shellcheck-bin"
+[ -z "$AUR_PROGS_FILE" ] && AUR_PROGS_FILE="$PWD/aur-programs.list"
+
+aurprogs="$(cat "$AUR_PROGS_FILE")"
 
 sudo pacman -S base-devel fakeroot
 
