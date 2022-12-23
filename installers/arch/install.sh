@@ -71,6 +71,12 @@ configuration() {
 
     sudo ufw enable
 
+#setup flatpak auto updates
+    sudo cp ./files/flatpak-update.service /etc/systemd/user/
+    sudo cp ./files/flatpak-update.timer /etc/systemd/user/
+    sudo systemctl daemon-reload
+    systemctl --user enable --now flatpak-update.timer
+
 #zsh setup
     chsh -s /bin/zsh "$USER"
 
@@ -88,6 +94,7 @@ configuration() {
     sudo sh -c "echo '$USER hard memlock 2048' >> /etc/security/limits.conf"
 
 #fixes
+    #fixes java progams on tilining window managers
     sudo sh -c 'echo "export _JAVA_AWT_WM_NONREPARENTING=1" >> /etc/profile.d/jre.sh'
 
 #theming
@@ -132,7 +139,6 @@ read input
 [ "$input" = "y" ] && wireless
 
 echo "installing AUR packages..."
-echo "$PWD"
 sh ./SCRIPTS/aur-install.sh
 echo "Done installing AUR packages."
 echo ""
