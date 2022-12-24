@@ -26,12 +26,10 @@ update() {
 
     fi
 
-    #curl https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn/hosts -o ./.sb_hosts
-
     #[ -f "$BLOCKFILE" ] && echo "blocklist file found." && sed 's/^/127.0.0.1    /g' "$BLOCKFILE" > ./blocklist
 
     #if [ -f "./blocklist" ]; then
-    #    cat ./.hosts.orig ./.swc_hosts ./.sb_hosts ./blocklist  > ./hosts
+    #    cat ./.hosts.orig ./.swc_hosts ./blocklist  > ./hosts
     #else
         cat ./.hosts.orig ./.swc_hosts  > ./hosts
     #fi
