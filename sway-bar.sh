@@ -132,8 +132,8 @@ update() {
 if [ "$1" ] && [ "$1" = "-l" ]; then    
     echo "$$" > ~/.cache/statusbar_pid
 
-    sh ~/.local/scripts/update-crypto.sh -i >> /dev/null &
-    sh ~/.local/scripts/update-weather.sh -i >> /dev/null &
+    #sh ~/.local/scripts/update-crypto.sh -i >> /dev/null &
+    #sh ~/.local/scripts/update-weather.sh -i >> /dev/null &
 
     while true
     do

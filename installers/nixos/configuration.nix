@@ -21,12 +21,16 @@
   # accidentally delete configuration.nix.
   system.copySystemConfiguration = true;
 
+  #enable automatic updates
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = false;
+
 
 # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "bismarck"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   #networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
@@ -79,6 +83,8 @@
     	chromium
 	brave
 	keepassxc
+    	monero-cli
+    	cura
      ];
    };
 
@@ -142,20 +148,20 @@
     notmuch
     isync
     pinentry-curses
+    pinentry-bemenu
     connman-gtk
     openssl
     git
     shellcheck
     jq
-    monero-cli
     bc
     gnome.zenity
-    cura
     udisks2
     udiskie
     python3
     python3.pkgs.pip
     chafa
+    wget
       ];
 
   fonts.fonts = with pkgs; [
@@ -163,7 +169,7 @@
     noto-fonts-extra
     noto-fonts-emoji
     noto-fonts-cjk-sans
-    nerdfonts
+    (nerdfonts.override { fonts = [ "Mononoki" ]; })
 
   ];
 
@@ -178,8 +184,6 @@
     pulse.enable = true;
   };
 
-
-
   services.pipewire.wireplumber.enable = true;
 
   # xdg-desktop-portal works by exposing a series of D-Bus interfaces
@@ -193,8 +197,8 @@
     enable = true;
     wlr.enable = true;
     # gtk portal needed to make gtk apps happy
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    gtkUsePortal = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+    #gtkUsePortal = true;
   };
 
 }
