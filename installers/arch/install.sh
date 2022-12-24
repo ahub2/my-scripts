@@ -139,7 +139,8 @@ read input
 [ "$input" = "y" ] && wireless
 
 echo "installing AUR packages..."
-sh ./scripts/aur-install.sh
+sh ./scripts/aur-install.sh ./files/aur-programs.list
+
 echo "Done installing AUR packages."
 echo ""
 
