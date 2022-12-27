@@ -23,6 +23,7 @@ depends=(
 "libva-mesa-driver"
 "connman"
 "brightnessctl"
+"xdg-desktop-portal-wlr"
 
 #system extra, extra programs that don't provide core functionality, but are still useful 
 "man-db"

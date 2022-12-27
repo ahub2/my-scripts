@@ -118,7 +118,7 @@ configuration() {
 #update repos
 sudo pacman -Syu
 
-#install meta package which installs most programs used in setup
+install meta package which installs most programs used in setup
 CDIR="$PWD"
 cd ./ajh-base/
 makepkg -si
@@ -132,12 +132,16 @@ systemd_setup
 #setup directories, configure ufw, setup zsh, etc.
 configuration
 
+cd "$CDIR"
+
 clear
 
 echo "Install wireless programs? (iwd bluez and tlp) (y/N)?"
 read input
 [ "$input" = "y" ] && wireless
 
+
+echo "PWD = $PWD"
 echo "installing AUR packages..."
 sh ./scripts/aur-install.sh ./files/aur-programs.list
 
