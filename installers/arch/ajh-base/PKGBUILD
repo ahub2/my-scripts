@@ -1,7 +1,7 @@
 pkgname="ajh-base"
 pkgver="1.0.0"
 pkgver="1"
-pkgrel="5"
+pkgrel="6"
 pkgdesc="Install my config for Arch based systems."
 arch=("x86_64")
 
@@ -23,12 +23,16 @@ depends=(
 "libva-mesa-driver"
 "connman"
 "brightnessctl"
+
+#flatpak/xdg stuff
+"flatpak"
 "xdg-desktop-portal-wlr"
+"xdg-desktop-portal-gtk"
+"xdg-utils"
+"xdg-user-dirs"
 
 #system extra, extra programs that don't provide core functionality, but are still useful 
 "man-db"
-"xdg-utils"
-"xdg-user-dirs"
 "pacman-contrib"
 "ufw"
 "wget"
@@ -45,7 +49,6 @@ depends=(
 "opendoas"
 "zsh"
 "openssh"
-"flatpak"
 "jq"
 "pamixer"
 
