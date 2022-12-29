@@ -1,7 +1,7 @@
 pkgname="ajh-base"
 pkgver="1.0.0"
 pkgver="1"
-pkgrel="6"
+pkgrel="7"
 pkgdesc="Install my config for Arch based systems."
 arch=("x86_64")
 
@@ -60,21 +60,12 @@ depends=(
 "clang"
 "python-pip"
 
-#multimedia
-"pavucontrol"
-"yt-dlp"
-"mpd"
-"mpv"
-"imv"
-
 #misc
 "lynx"
 "aria2" #optional dependency of ani-cli
 
 #theming
-"noto-fonts"
-"noto-fonts-emoji"
-"noto-fonts-cjk"
+"noto-fonts" "noto-fonts-emoji" "noto-fonts-cjk"
 "lxappearance"
 "qt5ct"
 "archlinux-wallpaper"
@@ -108,6 +99,15 @@ depends=(
 "foot-terminfo"
 "bemenu-wayland"
 "kanshi"
+
+#user applications
+"zathura" "zathura-cb" "zathura-djvu" "zathura-pdf-mupdf"
+"pavucontrol"
+"yt-dlp"
+"mpd"
+"mpv"
+"imv"
+
  )
 
 optdepends=()
