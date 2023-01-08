@@ -11,3 +11,5 @@ user = \"greeter\""
 
 sudo mkdir -p /etc/greetd/
 sudo sh -c "echo $GREETD_CONFIG > /etc/greetd/config.toml"
+
+sudo systemctl enable greetd.service

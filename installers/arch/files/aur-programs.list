@@ -17,5 +17,7 @@ wob
 tofi
 shellcheck-bin
 librewolf-bin
+pipe-viewer-git
+lobster
 greetd
 greetd-tuigreet
