@@ -17,3 +17,5 @@ wob
 tofi
 shellcheck-bin
 librewolf-bin
+greetd
+greetd-tuigreet
