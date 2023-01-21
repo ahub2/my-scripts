@@ -122,7 +122,7 @@ crypto() {
 }
 
 update() {
-    echo " $(crypto)$SEP$(cputemp)$SEP$(battery)$SEP$(netup)$SEP$(audio)$SEP$(rss)$SEP$(weather)$SEP$(ddate) "
+    echo " $SEP$(battery)$SEP$(netup)$SEP$(audio)$SEP$(rss)$SEP$(weather)$SEP$(ddate) "
 }
 
 

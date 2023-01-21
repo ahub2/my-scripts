@@ -65,7 +65,7 @@ depends=(
 "aria2" #optional dependency of ani-cli
 
 #theming
-"noto-fonts" "noto-fonts-emoji" "noto-fonts-cjk"
+"noto-fonts" "noto-fonts-emoji" "noto-fonts-cjk" "ttf-mononoki-nerd"
 "lxappearance"
 "qt5ct"
 "archlinux-wallpaper"

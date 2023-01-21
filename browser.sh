@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-WBROWSER=librewolf
+WBROWSER="flatpak run com.brave.Browser"
 
 
 #OPTS="             Torrent )
