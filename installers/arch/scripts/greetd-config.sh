@@ -10,6 +10,10 @@ command = \"tuigreet --time --cmd sway\"
 user = \"greeter\""
 
 sudo mkdir -p /etc/greetd/
-sudo sh -c "echo $GREETD_CONFIG > /etc/greetd/config.toml"
+
+#TODO may be better way to do this
+echo "$GREETD_CONFIG" > ./.config.toml.tmp
+sudo cp ./.config.toml.tmp /etc/greetd/config.toml
+rm ./.config.toml.tmp
 
 sudo systemctl enable greetd.service
