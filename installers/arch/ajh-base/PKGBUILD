@@ -51,6 +51,7 @@ depends=(
 "openssh"
 "jq"
 "pamixer"
+"xorg-xhost" #needed to run graphical programs as root
 
 #libs/plugins
 "python-urwid"
