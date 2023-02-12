@@ -54,23 +54,31 @@ select"
 sel() {
     SEL="$( echo "$OPTS" | bemenu)"
 
-    [ "$SEL" = "Web" ] && $WBROWSER "$1" && exit
 
-    [ "$SEL" = "Video" ] && mpv "$1" && exit
+    case "$SEL" in
 
-    [ "$SEL" = "YT" ] && mpv --ytdl-format=18 "$1" && exit
+        "Web") $WBROWSER "$1" ;;
 
-    [ "$SEL" = "Audio" ] && $TERMINAL -e mpv "$1" && exit
+        "Video") mpv "$1";;
 
-    [ "$SEL" = "Youtube-dl audio" ] && ydl "$1" && exit
+        "YT")  mpv --ytdl-format=18 "$1";; 
 
-    [ "$SEL" = "File" ] && cd "$XDG_DOWNLOAD_DIR" && curl -O -L "$1" && exit
+        "Audio") mpc insert "$1" 
+                 mpc next
+                 mpc play ;;
 
-    [ "$SEL" = "RSS" ] && rss "$1" && exit
+        "Youtube-dl audio") ydl "$1" ;;
 
-    [ "$SEL" = "Torrent" ] && transadd "$1" && exit
-    
-#$WBROWSER "$1"
+        "File")  cd "$XDG_DOWNLOAD_DIR" && curl -O -L "$1";;
+
+        "RSS") rss "$1";;
+
+        "Torrent") transadd "$1";;
+
+    esac
+
+    exit
+
 }
 
 if [ -z "$1" ]; then 
