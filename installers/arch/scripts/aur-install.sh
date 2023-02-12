@@ -12,19 +12,6 @@ yay_install() {
     makepkg -si
 }
 
-greetd_config() {
-    sudo mkdir -p /etc/greetd/
-
-GREETD_CONFIG="[terminal]
-vt = 1
-
-[default_session]
-command = \"tuigreet --time --cmd sway\"
-user = \"greeter\""
-
-    sudo sh -c "echo $GREETD_CONFIG > /etc/greetd/config.toml" 
-}
-
 pkg_install() {
     aurprogs="$(cat "$AUR_PROGS_FILE")"
     for pkg in $aurprogs
@@ -39,9 +26,12 @@ if [ -f "$AUR_PROGS_FILE" ]; then
 
     pkg_install
 
+    greetd_config
+
     
 
 else
+    greetd_config
     echo "enter file containing package names to install separated by newlines as first input argument" && exit
 fi
 
