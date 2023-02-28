@@ -7,14 +7,12 @@ pfetch
 sysrq-enabler
 wlr-randr
 sfeed
-waylogout-git
 ani-cli-git
 connman-gtk
 lf-sixel-git
 autotiling
-wob
-tofi
 shellcheck-bin
 librewolf-bin
+brave-bin
 pipe-viewer-git
 lobster

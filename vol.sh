@@ -8,11 +8,13 @@ refbar() {
 
 display() {
     VAL="$(get | sed 's/^.*\.//g' )"
+    echo "$VAL"
 
     [ -n "$1" ] && VAL="$1"
 
-    mywob "$VAL"
+    #mywob "$VAL"
 
+    notify-send -a "volsh" " " -i I -h int:value:"$VAL" -h string:synchronous:volume -h string:x-canonical-private-synchronous:anything -t 1000
 }
 
 inc() {

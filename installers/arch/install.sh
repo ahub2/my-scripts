@@ -118,7 +118,7 @@ configuration() {
 #update repos
 sudo pacman -Syu
 
-install meta package which installs most programs used in setup
+#install meta package which installs most programs used in setup
 CDIR="$PWD"
 cd ./ajh-base/
 makepkg -si
@@ -143,7 +143,7 @@ read input
 
 echo "PWD = $PWD"
 echo "installing AUR packages..."
-sh ./scripts/aur-install.sh ./files/aur-programs.list
+#sh ./scripts/aur-install.sh ./files/aur-programs.list
 
 echo "Done installing AUR packages."
 echo ""

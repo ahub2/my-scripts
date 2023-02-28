@@ -26,12 +26,8 @@ if [ -f "$AUR_PROGS_FILE" ]; then
 
     pkg_install
 
-    greetd_config
-
-    
 
 else
-    greetd_config
     echo "enter file containing package names to install separated by newlines as first input argument" && exit
 fi
 
