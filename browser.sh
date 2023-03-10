@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-WBROWSER="flatpak run com.brave.Browser"
+WBROWSER="brave"
 
 
 #OPTS="             Torrent )
@@ -69,7 +69,10 @@ sel() {
 
         "Youtube-dl audio") ydl "$1" ;;
 
-        "File")  cd "$XDG_DOWNLOAD_DIR" && curl -O -L "$1";;
+        "File")  
+                DL_DIR="$(lf-dir.sh)" 
+                cd "$DL_DIR" && curl -O -L "$1"
+                notify-send "$1 downloaded to: $DL_DIR";;
 
         "RSS") rss "$1";;
 

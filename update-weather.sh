@@ -8,6 +8,7 @@ echo $UPDATE | wc -m
 
 if [ $(echo $UPDATE | wc -m) -le 30 ]; then
 	echo "$UPDATE" > ~/.cache/wttr
+    date >> ~/.cache/wttr_update
 
 else
 	echo "❗" > ~/.cache/wttr 

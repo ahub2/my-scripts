@@ -5,7 +5,7 @@ setwp() {
     #wal -n -s -t -e -i "$1"
     rm ~/.config/wall 
     cp "$1" "$HOME/.config/wall"
-    swaymsg "output * bg ~/.config/wall fill"
+    swaymsg "output * bg ~/.config/wall fit"
     #swaybg --image "$HOME/.config/wall"
 }
 
