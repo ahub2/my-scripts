@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[ -z "$PFILE" ] && PFILE="$HOME/.local/share/pass.gpg"
+[ -z "$PFILE" ] && PFILE="$HOME/.files/pass.gpg"
 
 
 mkpass() {

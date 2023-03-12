@@ -37,18 +37,18 @@ wireless() {
 configuration() {
     echo "Starting installation configuration..."
 #setup home directories
-    mkdir ~/docs/
-    mkdir ~/dl/
-    mkdir ~/media/
+    #mkdir ~/docs/
+    #mkdir ~/dl/
+    #mkdir ~/media/
+    #mkdir -p ~/media/audio
+    #mkdir -p ~/media/img
+    #mkdir -p ~/media/video
     mkdir -p ~/.config/mpd/playlists
     mkdir -p ~/.local/share/gnupg/
     mkdir -p ~/.local/share/desktop
     mkdir -p ~/.local/share/wineprefixes/default
     mkdir -p ~/.local/share/templates
     mkdir -p ~/.local/share/public
-    mkdir -p ~/media/audio
-    mkdir -p ~/media/img
-    mkdir -p ~/media/video
     mkdir -p ~/.local/src/
     
 #setup ufw
@@ -142,10 +142,10 @@ read input
 
 
 echo "PWD = $PWD"
-echo "installing AUR packages..."
+#echo "installing AUR packages..."
 #sh ./scripts/aur-install.sh ./files/aur-programs.list
 
-echo "Done installing AUR packages."
+#echo "Done installing AUR packages."
 echo ""
 
 echo "installation complete."
