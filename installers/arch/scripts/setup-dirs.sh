@@ -1,12 +1,17 @@
 #!/bin/sh
-FILES_DIR="$HOME/.files/"
+FILES_DIR="$HOME/.files"
 
-ln -s "$HOME"/.files/dl "$HOME"/dl
-ln -s "$HOME"/.files/docs "$HOME"/docs
-ln -s "$HOME"/.files/media "$HOME"/media
-ln -s "$HOME"/.files/.ssh "$HOME"/.ssh
+#directories
+ln -s "$FILES_DIR"/dl "$HOME"/dl
+ln -s "$FILES_DIR"/docs "$HOME"/docs
+ln -s "$FILES_DIR"/media "$HOME"/media
+ln -s "$FILES_DIR"/.ssh "$HOME"/.ssh
+ln -s "$FILES_DIR"/.local/share/password-store "$HOME"/.local/share/
+ln -s "$FILES_DIR"/.local/share/gnupg "$HOME"/.local/share/
+ln -s "$FILES_DIR"/dbhome "$HOME"/
 
-ln -s "$HOME"/.files/.gitconfig "$HOME"/.gitconfig
+#files
+ln -s "$FILES_DIR"/.gitconfig "$HOME"/.gitconfig
 
 mkdir -p ~/.var/app/
 ln -s "$HOME"/.files/.var/app/io.gitlab.librewolf-community ~/.var/app/io.gitlab.librewolf-community 
