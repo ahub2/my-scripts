@@ -23,6 +23,7 @@ depends=(
 "libva-mesa-driver"
 "connman"
 "brightnessctl"
+"cifs-utils"
 
 #flatpak/xdg stuff
 "flatpak"
