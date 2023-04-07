@@ -12,7 +12,6 @@ connman-gtk
 lf-sixel-git
 autotiling
 shellcheck-bin
-librewolf-bin
-brave-bin
 pipe-viewer-git
 lobster
+systemd-boot-pacman-hook

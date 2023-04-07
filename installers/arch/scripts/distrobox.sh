@@ -3,7 +3,7 @@
 
 sudo pacman -S podman fuse-overlayfs
 
-yay -S distrobox
+sudo pacman -S distrobox
 
 
 echo "setting storage driver to btrfs, if not using btrfs change this in ~/.config/containers/storage.conf"
