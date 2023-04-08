@@ -3,7 +3,7 @@ pkgver="1.0.0"
 pkgver="1"
 pkgrel="9"
 pkgdesc="Install my config for Arch based systems."
-arch=("x86_64")
+arch=("any")
 
 depends=( 
 #system core, provides core functionality like internet, sound, etc.

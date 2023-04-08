@@ -16,7 +16,7 @@ pkg_install() {
     aurprogs="$(cat "$AUR_PROGS_FILE")"
     for pkg in $aurprogs
     do
-        yay -S "$pkg"
+        yay -S "$pkg" --noconfirm
     done
 }
 

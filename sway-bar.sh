@@ -99,7 +99,8 @@ cputemp() {
 }
 
 battery() {
-    BATT_DIR="/sys/class/power_supply/BAT0"
+    #BATT_DIR="/sys/class/power_supply/BAT0"
+    BATT_DIR="/sys/class/power_supply/cw2015-battery"
     if [ -d "$BATT_DIR" ]; then  
         status="$(cat "$BATT_DIR"/status)"
         charge="$(cat "$BATT_DIR"/capacity)"
