@@ -8,7 +8,6 @@ sysrq-enabler
 wlr-randr
 sfeed
 ani-cli-git
-connman-gtk
 lf-sixel-git
 autotiling
 shellcheck-bin
