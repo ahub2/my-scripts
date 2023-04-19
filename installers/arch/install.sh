@@ -28,7 +28,7 @@ wireless() {
     sudo systemctl enable tlp.service
     sudo systemctl enable bluetooth.service
 
-    sudo systemctl enable connman.service
+    #sudo systemctl enable connman.service
     sudo systemctl enable iwd.service
 
     echo "Done installing wireless programs."
