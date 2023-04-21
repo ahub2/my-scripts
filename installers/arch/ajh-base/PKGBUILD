@@ -72,6 +72,7 @@ depends=(
 "archlinux-wallpaper"
 
 #tui, terminal programs and programs/libs used by them
+"tldr"
 "imagemagick"
 "ffmpegthumbnailer"
 "python-pdftotext"

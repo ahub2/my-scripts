@@ -35,35 +35,27 @@ help () {
 [  "$( wc -l "$FILE" | cut -d ' ' -f 1 )" != "16" ] && help && exit
 
 
-NB=""
-NF=""
-HB=""
-HF=""
-SB=""
-SF=""
-TB=""
-TF=""
-FB=""
-FF="#ffffff"
+COLOR00="$(sed '1!d' "$FILE")"
+COLOR01="$(sed '2!d' "$FILE")"
+COLOR02="$(sed '3!d' "$FILE")"
+COLOR03="$(sed '4!d' "$FILE")"
+COLOR04="$(sed '5!d' "$FILE")"
+COLOR05="$(sed '6!d' "$FILE")"
+COLOR06="$(sed '7!d' "$FILE")"
+COLOR07="$(sed '8!d' "$FILE")"
+COLOR08="$(sed '9!d' "$FILE")"
+COLOR09="$(sed '10!d' "$FILE")"
+COLOR0A="$(sed '11!d' "$FILE")"
+COLOR0B="$(sed '12!d' "$FILE")"
+COLOR0C="$(sed '13!d' "$FILE")"
+COLOR0D="$(sed '14!d' "$FILE")"
+COLOR0E="$(sed '15!d' "$FILE")"
+COLOR0F="$(sed '16!d' "$FILE")"
 
-IFS='
-'
-
-COUNT=0
-for LINE in $(cat "$FILE") 
-do
-    case $COUNT in
-        0) NB="$LINE" && HB="$LINE" && TB="$LINE" && FB="$LINE";;
-        1) SB="$LINE";;
-        6) HF="$LINE" && SF="$LINE";;
-        10) NF="$LINE" && TF="$LINE";;
-    esac
-
-    COUNT=$((COUNT + 1))
-done
 
 echo "bemenu colors updated."
 
 echo "#!/bin/sh" > "$BEMENUOPTS_FILE" 
 echo "#generated from: $1" >> "$BEMENUOPTS_FILE"
-echo "export BEMENU_OPTS=\"-H $HEIGHT --nb $NB --nf $NF --hb $HB  --hf $HF --sb $SB  --sf $SF --tb $TB --tf $TF --fb $FB --ff $FF\"" >> "$BEMENUOPTS_FILE"
+#echo "export BEMENU_OPTS=\"-H $HEIGHT --tb $COLOR03 --tf $COLOR06 --fb $COLOR00 --ff $COLOR06 --nb $COLOR00 --nf $COLOR04 --hb $COLOR0A --hf $COLOR0A --sb $COLOR02 --sf $COLOR0A --scb $COLOR00 --scf $COLOR0E \"" >> "$BEMENUOPTS_FILE"
+echo "export BEMENU_OPTS=\"-H $HEIGHT --tb $COLOR00 --tf $COLOR0A --fb $COLOR00 --ff $COLOR09 --nb $COLOR02 --nf $COLOR0A --hb $COLOR06 --hf $COLOR06 --sb $COLOR01 --sf $COLOR06  \"" >> "$BEMENUOPTS_FILE"
