@@ -22,7 +22,7 @@ MAIL_DIR="$HOME/.local/share/mail"
 
 SEP="  |  "
 
-BATTERY_DEV="$(ls /sys/class/power_supply | grep -v AC)"
+BATTERY_DEV="$(ls /sys/class/power_supply | grep -v AC | head -n1 )"
 
 ddate () {
 	printf " %s\n" "$(date "+%b %d, %Y ( %I:%M )")" #(%a)
@@ -103,6 +103,7 @@ cputemp() {
 battery() {
     #BATT_DIR="/sys/class/power_supply/BAT0"
     BATT_DIR="/sys/class/power_supply/$BATTERY_DEV"
+
     if [ -d "$BATT_DIR" ]; then  
         status="$(cat "$BATT_DIR"/status)"
         charge="$(cat "$BATT_DIR"/capacity)"
