@@ -22,6 +22,8 @@ MAIL_DIR="$HOME/.local/share/mail"
 
 SEP="  |  "
 
+BATTERY_DEV="$(ls /sys/class/power_supply | grep -v AC)"
+
 ddate () {
 	printf " %s\n" "$(date "+%b %d, %Y ( %I:%M )")" #(%a)
 }
@@ -100,7 +102,7 @@ cputemp() {
 
 battery() {
     #BATT_DIR="/sys/class/power_supply/BAT0"
-    BATT_DIR="/sys/class/power_supply/cw2015-battery"
+    BATT_DIR="/sys/class/power_supply/$BATTERY_DEV"
     if [ -d "$BATT_DIR" ]; then  
         status="$(cat "$BATT_DIR"/status)"
         charge="$(cat "$BATT_DIR"/capacity)"
@@ -123,7 +125,7 @@ crypto() {
 }
 
 update() {
-    echo " $SEP$(battery)$SEP$(netup)$SEP$(audio)$SEP$(rss)$SEP$(weather)$SEP$(ddate) "
+    echo " $SEP$(battery)$SEP$(cputemp)$SEP$(netup)$SEP$(audio)$SEP$(rss)$SEP$(weather)$SEP$(ddate) "
 }
 
 

@@ -1,7 +1,7 @@
 pkgname="ajh-base"
 pkgver="1.0.0"
 pkgver="1"
-pkgrel="9"
+pkgrel="10"
 pkgdesc="Install my config for Arch based systems."
 arch=("any")
 
@@ -20,7 +20,6 @@ depends=(
 "fuse"
 "mesa"
 "libva-mesa-driver"
-"connman"
 "brightnessctl"
 "cifs-utils"
 
