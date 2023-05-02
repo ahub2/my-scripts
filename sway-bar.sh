@@ -75,7 +75,7 @@ netup() {
         	if [ "$(echo "$iface" | grep w)" ]; then
             	icon=" "     
         	else
-            	icon=""
+            	icon="🖧"
         	fi
     	elif [ -z "$icon" ]; then
         	icon="❗"
