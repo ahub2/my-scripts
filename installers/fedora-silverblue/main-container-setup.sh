@@ -22,3 +22,9 @@ sudo dnf install foot-terminfo iputils
 sudo dnf install git python3-pip g++
 sudo dnf groupinstall "Development Tools" "Development Libraries"
 sudo dnf install man-db
+
+
+sudo dnf install rofi-wayland
+
+sudo dnf copr enable derisis13/ani-cli
+sudo dnf install ani-cli
