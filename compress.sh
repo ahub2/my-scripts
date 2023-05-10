@@ -57,7 +57,7 @@ compress() {
 
 extract() {
     set -f
-    FILE="$(echo "$1" | xargs)" #use xargs to trim whitespace
+    FILE="$(echo "$1" | xargs -0)" #use xargs to trim whitespace
     DIR="$(basename "$FILE" | cut -f 1 -d '.')"
     mkdir "$DIR" 
     case $FILE in
@@ -65,7 +65,7 @@ extract() {
         *.tar.gz|*.tgz) tar xzvf "$FILE" --directory="$DIR";;
         *.tar.xz|*.txz) tar xJvf "$FILE" --directory="$DIR";;
         *.zip) unzip "$FILE" -d "$DIR";;
-        *.rar) unrar x "$FILE" "$DIR";;
+        *.rar) unrar-free -x "$FILE" "$DIR";;
         *.7z | *.crx) 7z x "$FILE" -o"$DIR";;
     esac
 }

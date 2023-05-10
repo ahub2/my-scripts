@@ -28,3 +28,5 @@ sudo dnf install rofi-wayland
 
 sudo dnf copr enable derisis13/ani-cli
 sudo dnf install ani-cli
+
+sudo dnf install p7zip p7zip-plugins unrar-free

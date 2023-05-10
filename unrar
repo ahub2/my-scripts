@@ -6,7 +6,6 @@
 # $2 -> archive file name ex: archive.rar
 # $3 -> (optional) directory to extract to
 
-
 if [ "$1" = "x" ]; then
     if [ "$(echo "$2" | grep ".rar" )" ]; then
         if [ -d "$3" ]; then
