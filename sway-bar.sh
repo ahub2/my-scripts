@@ -37,7 +37,7 @@ audio () {
    #		icon="$(echo "$volstat" | grep -o "\[[0-9]\+%\]" | sed 's/[^0-9]*//g' | sed -n 1p -) 🔊"
    # fi
 
-   icon="$(vol.sh -g)  🔊" 
+   icon="$(~/.local/scripts/vol.sh -g)  🔊" 
    [ "$(pamixer --get-mute)" = "true" ] && icon="🔇"
 
     printf "%s\n" "$icon"

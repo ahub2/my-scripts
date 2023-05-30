@@ -14,3 +14,4 @@ shellcheck-bin
 pipe-viewer-git
 lobster
 systemd-boot-pacman-hook
+rofi-lbonn-wayland-only-git

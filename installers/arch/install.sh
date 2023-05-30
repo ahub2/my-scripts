@@ -81,7 +81,7 @@ configuration() {
     chsh -s /bin/zsh "$USER"
 
     #setup .zprofile and zsh history file
-    ln -s ~/.profile ~/.zprofile
+    ln -s ~/.config/zsh/.zprofile ~/.profile
     mkdir -p ~/.cache/zsh
     touch ~/.cache/zsh/history
 
