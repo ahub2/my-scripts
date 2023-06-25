@@ -16,7 +16,7 @@ Torrent"
 rss() {
 #sfeed
     sed -i '$d' ~/.config/sfeed/sfeedrc
-    FEED_NAME="$(echo "" | bemenu -p "Feed Name: ")"
+    FEED_NAME="$(echo "" | rofi -dmenu -p "Feed Name: ")"
     echo "feed \"$FEED_NAME\" \"$1\"" >> ~/.config/sfeed/sfeedrc
     echo "}" >> ~/.config/sfeed/sfeedrc
 
@@ -29,7 +29,7 @@ ydl() {
     OPT="default
 select"
 
-    SEL="$( echo "$OPT" | bemenu)"
+    SEL="$( echo "$OPT" | rofi -dmenu)"
 
     LOC="$HOME/media/audio/"
 
@@ -52,7 +52,7 @@ select"
 
 
 sel() {
-    SEL="$( echo "$OPTS" | bemenu)"
+    SEL="$( echo "$OPTS" | rofi -dmenu)"
 
 
     case "$SEL" in
