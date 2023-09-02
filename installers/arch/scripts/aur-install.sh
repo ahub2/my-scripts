@@ -28,6 +28,7 @@ if [ -f "$AUR_PROGS_FILE" ]; then
 
 
 else
+    yay_install
     echo "enter file containing package names to install separated by newlines as first input argument" && exit
 fi
 

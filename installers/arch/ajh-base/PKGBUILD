@@ -1,7 +1,7 @@
 pkgname="ajh-base"
-pkgver="1.0.0"
-pkgver="1"
-pkgrel="10"
+pkgver="0.0.1"
+pkgver="0"
+pkgrel="1"
 pkgdesc="Install my config for Arch based systems."
 arch=("any")
 
@@ -18,8 +18,8 @@ depends=(
 "gst-libav"
 "btrfs-progs"
 "fuse"
-"mesa"
-"libva-mesa-driver"
+#"mesa"
+#"libva-mesa-driver"
 "brightnessctl"
 "cifs-utils"
 
@@ -85,7 +85,7 @@ depends=(
 "libsixel"
 
 #desktop, programs related to setting up a graphical user interface
-"sway"
+#"sway"
 "swaybg"
 "swayidle"
 "swaylock"
