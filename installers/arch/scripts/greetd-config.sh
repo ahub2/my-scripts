@@ -1,6 +1,6 @@
 #!/bin/sh
 
-yay -S greetd greetd-tuigreet
+#yay -S greetd greetd-tuigreet
 
 GREETD_CONFIG="[terminal]
 vt = 1

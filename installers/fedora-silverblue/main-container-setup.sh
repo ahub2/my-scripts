@@ -1,29 +1,38 @@
 #!/bin/sh
 
-sudo dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-"$(rpm -E %fedora)".noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-"$(rpm -E %fedora)".noarch.rpm
+sudo dnf -y install dnf5 dnf5-plugins
 
-sudo dnf -y copr enable pennbauman/ports
+sudo dnf5 -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-"$(rpm -E %fedora)".noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-"$(rpm -E %fedora)".noarch.rpm
 
-sudo dnf -y  install lf mpv ncmpcpp yt-dlp yt-dlp-zsh-completion chafa imv neovim p7zip p7zip-plugins unrar-free
-sudo dnf -y install htop radeontop
+sudo dnf5 copr enable pennbauman/ports
 
-sudo dnf -y install mpd --allowerasing
+sudo dnf5 -y  install lf mpv ncmpcpp yt-dlp yt-dlp-zsh-completion chafa imv neovim p7zip p7zip-plugins unrar-free
+sudo dnf5 -y install htop radeontop
+
+sudo dnf5 -y install mpd --allowerasing
 
 #background stuff needed for scripts, etc.
-sudo dnf -y install ImageMagick bat ffmpegthumbnailer
+sudo dnf5 -y install ImageMagick bat ffmpegthumbnailer file
 
 #gui programs
-sudo dnf -y install zathura zathura-cb zathura-djvu zathura-pdf-mupdf
+sudo dnf5 -y install zathura zathura-cb zathura-djvu zathura-pdf-mupdf
 
 #misc
-sudo dnf -y install foot-terminfo iputils
+sudo dnf5 -y install foot-terminfo iputils
 
 #development stuff
-sudo dnf -y install git python3-pip g++
-sudo dnf -y groupinstall "Development Tools" "Development Libraries"
-sudo dnf -y install man-db
+sudo dnf5 -y install git python3-pip g++
+sudo dnf5 -y group install development-tools 
+sudo dnf5 -y install man-db
 
 #install dbus-daemon to get flatpaks to work inside distrobox
-sudo dnf -y install dbus-daemon
+sudo dnf5 -y install dbus-daemon
 sudo mkdir /run/dbus
 # run: "sudo dbus-daemon --system" before running a flatpak
+#
+
+sudo dnf5 -y install nvtop
+
+
+#misc needed for random programs
+sudo dnf5 -y install libatomic gstreamer1-vaapi GConf2

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -S npm cargo
+#sudo pacman -S npm cargo
 
 rm -rf ~/.config/nvim/
 rm -rf ~/.local/share/nvim/
