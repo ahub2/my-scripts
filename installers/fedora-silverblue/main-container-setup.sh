@@ -12,7 +12,7 @@ sudo dnf5 -y install htop radeontop
 sudo dnf5 -y install mpd --allowerasing
 
 #background stuff needed for scripts, etc.
-sudo dnf5 -y install ImageMagick bat ffmpegthumbnailer file
+sudo dnf5 -y install ImageMagick bat ffmpegthumbnailer file xpdf
 
 #gui programs
 sudo dnf5 -y install zathura zathura-cb zathura-djvu zathura-pdf-mupdf
