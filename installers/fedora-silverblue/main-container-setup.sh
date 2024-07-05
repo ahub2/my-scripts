@@ -6,8 +6,12 @@ sudo dnf5 -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-re
 
 sudo dnf5 copr enable pennbauman/ports
 
-sudo dnf5 -y  install lf mpv ncmpcpp yt-dlp yt-dlp-zsh-completion chafa imv neovim p7zip p7zip-plugins unrar-free
-sudo dnf5 -y install htop radeontop
+sudo dnf5 -y  install lf mpv ncmpcpp yt-dlp yt-dlp-zsh-completion chafa imv neovim 
+
+#archive handling
+sudo dnf5 -y install p7zip p7zip-plugins unrar atool
+
+sudo dnf5 -y install htop nvtop 
 
 sudo dnf5 -y install mpd --allowerasing
 
@@ -35,4 +39,4 @@ sudo dnf5 -y install nvtop
 
 
 #misc needed for random programs
-sudo dnf5 -y install libatomic gstreamer1-vaapi GConf2
+sudo dnf5 -y install libatomic gstreamer1-vaapi GConf2 zenity
