@@ -9,7 +9,7 @@ sudo dnf5 copr enable pennbauman/ports
 sudo dnf5 -y  install lf mpv ncmpcpp yt-dlp yt-dlp-zsh-completion chafa imv neovim 
 
 #archive handling
-sudo dnf5 -y install p7zip p7zip-plugins unrar atool
+sudo dnf5 -y install p7zip p7zip-plugins unrar
 
 sudo dnf5 -y install htop nvtop 
 

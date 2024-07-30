@@ -1,91 +1,108 @@
 #!/bin/sh
 
-mkname() {
-    FILES="$( echo "$@" | head -1 - )"
-
-    NAME="$(echo "$FILES" | awk '{print $1}' | xargs -0 basename | cut -f 1 -d '.')" 
-
-    #C=0 #create counter variable in case of infinite loop
-    #while : 
-    #do
-    #    case "$NAME" in
-    #        *.*) NAME="$(echo "$NAME" | cut -f 2 -d '.')" ;; #trim file extensions
-    #        #.*) NAME="$(echo "$NAME" | sed 's/^\.//g')" ;; #trim leading periods
-    #        /*) NAME="$(echo "$NAME" | sed 's/^\///g')" ;; #trim leading slashes
-    #        *)     break;;                                 #break if all above conditions are gone
-    #    esac
-    #
-    #    C=$((C + 1))
-    #    [ $C -gt 10 ] && break #if counter limit reached break loop
-    #done
-
-    echo "$NAME" 
+help () {
+    echo "script to compress/extract files using 7z and unrar"
+    echo "    -c [ files/directories ]  =>  compress input directories or files, if only one file is passed, the filename will be used as the archive name. If passing multiple files, surround all filenames with quotes, i.e. compress.sh -c \"file1.txt file2.txt dir1\" "
+    echo "    -e [ file ]               =>  extract input file to the current directory"
+    echo "    -l [ file ]               =>  print contents of file to stdout"
+    echo "    -h                        =>  show this help menu"
+    exit 0
 }
 
 compress() {
-    set -f
-    echo "@ = $@"
-    FILES="$(echo "$@" | xargs -0)"
-    echo "FILES = $FILES"
+    FILES="$@"
+    echo "compressing files: $FILES"
 
-    DIRNAME="$(basename "$FILES")"
-    echo "DIRNAME = $DIRNAME"
+    NUMFILES="$(echo $FILES | wc -w)"
+    BASENAME="$(basename $FILES)"
 
-    if ! [ -d "$DIRNAME" ]; then
-        DIRNAME="$(mkname "$@")"
-
-        echo "making directory $DIRNAME"
-        mkdir "$DIRNAME"
-        for f in $FILES
-        do
-            cp -r "$f" "$DIRNAME"
-        done
-        DELFLAG="TRUE"      #set delete flag if we created a temp directory
+    # if only one file is passed, use filename as archive name, otherwise prompt user for input 
+    if [ $NUMFILES = "1" ]; then
+        fn="$BASENAME"
+    else
+        echo "input filename for archive"
+        read fn
     fi
 
-    echo "enter compression type [tar.gz, zip, 7z(default)]: "
-    read TYPE
+    fn=$fn.7z
+    echo "creating archive $fn"
 
-    case "$TYPE" in
-        tar.gz) tar czf "$DIRNAME".tar.gz "$DIRNAME";;
-        zip) zip -r "$DIRNAME".zip "$DIRNAME";;
-        *) 7z a "$DIRNAME".7z "$DIRNAME";;
-    esac
+    if ! [ -e $fn ]; then
+        for F in $FILES 
+        do 
+            echo "adding file $F to archive"
+            7z a $fn $F
 
-     [ "$DELFLAG" ] && rm -rf "$DIRNAME"
+        done
+
+    else
+        echo "ERROR file: $fn exists, exiting."
+        exit 1
+    fi
+
+    exit 0
 }
 
 extract() {
-    set -f
-    FILE="$(echo "$1" | xargs -0)" #use xargs to trim whitespace
-    DIR="$(basename "$FILE" | cut -f 1 -d '.')"
-    mkdir "$DIR" 
-    case $FILE in
-        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf "$FILE" --directory="$DIR";;
-        *.tar.gz|*.tgz) tar xzvf "$FILE" --directory="$DIR";;
-        *.tar.xz|*.txz) tar xJvf "$FILE" --directory="$DIR";;
-        *.zip) unzip "$FILE" -d "$DIR";;
-        *.rar) unrar-free -x "$FILE" "$DIR";;
-        *.7z | *.crx) 7z x "$FILE" -o"$DIR";;
+    FILE="$@"
+    echo "extracting: [$FILE]"
+
+    case "$FILE" in 
+        *.rar) 
+            unrar x "$FILE"
+            exit 0
+            ;;
+        *) 
+            7z x "$FILE"
+            exit 0
+            ;;
     esac
+    exit 0
 }
 
-help () {
-    echo "script to compress/extract files using tar/zip/rar"
-    echo "    -c [ files/directories ]  =>  compress input files/directories"
-    echo "    -e [ file ]               => extract input file to a subdirectory of the files name"
+list() {
+    FILE="$1"
+
+    case "$FILE" in 
+        *.rar) 
+            unrar l "$FILE"
+            exit 0
+            ;;
+        *) 
+            7z l "$FILE"
+            exit 0
+            ;;
+    esac
+    exit 0
 }
 
-#get all input except first argument, if first argument has a '-' and save in ARGS
-#ARGS="$( echo "$@" | sed 's/^-.* //g' )" 
-ARGS="$2"
+#input argument handling code copied from: https://stackoverflow.com/a/14203146
+# A POSIX variable
+OPTIND=1         # Reset in case getopts has been used previously in the shell.
 
-echo "ARGS = $ARGS"
+# Initialize our own variables:
+output_file=""
+input_files=""
+verbose=0
 
-if [ "$1" = "-c" ]; then
-    compress "$ARGS"
-elif [ "$1" = "-e" ]; then
-    extract "$ARGS"
-else
-    help
-fi
+[ $# = "0" ] && help 
+
+while getopts "h?c:e:l:" opt; do
+    case "$opt" in
+        h|\?)
+            help
+            ;;
+        c) 
+            compress $OPTARG
+            exit 0
+            ;;
+        e) 
+            extract $OPTARG
+            exit 0
+            ;;
+        l)
+           list $OPTARG
+           exit 0
+           ;;
+    esac
+done
