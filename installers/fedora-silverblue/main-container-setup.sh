@@ -14,7 +14,7 @@ sudo dnf5 -y install mpv ncmpcpp yt-dlp yt-dlp-zsh-completion chafa imv ani-cli
 sudo dnf5 -y  install lf neovim htop nvtop 
 
 #archive handling
-sudo dnf5 -y install p7zip p7zip-plugins unrar atool
+sudo dnf5 -y install p7zip p7zip-plugins unrar
 
 sudo dnf5 -y install mpd --allowerasing
 
