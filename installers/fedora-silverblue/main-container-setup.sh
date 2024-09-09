@@ -5,13 +5,16 @@ sudo dnf -y install dnf5 dnf5-plugins
 sudo dnf5 -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-"$(rpm -E %fedora)".noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-"$(rpm -E %fedora)".noarch.rpm
 
 sudo dnf5 copr enable pennbauman/ports
+sudo dnf copr enable derisis13/ani-cli
 
-sudo dnf5 -y  install lf mpv ncmpcpp yt-dlp yt-dlp-zsh-completion chafa imv neovim 
+#media tools 
+sudo dnf5 -y install mpv ncmpcpp yt-dlp yt-dlp-zsh-completion chafa imv ani-cli
+
+#cli tools 
+sudo dnf5 -y  install lf neovim htop nvtop 
 
 #archive handling
 sudo dnf5 -y install p7zip p7zip-plugins unrar
-
-sudo dnf5 -y install htop nvtop 
 
 sudo dnf5 -y install mpd --allowerasing
 
@@ -35,8 +38,6 @@ sudo dnf5 -y install dbus-daemon
 sudo mkdir /run/dbus
 # run: "sudo dbus-daemon --system" before running a flatpak
 #
-
-sudo dnf5 -y install nvtop
 
 
 #misc needed for random programs

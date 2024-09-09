@@ -15,7 +15,7 @@ else
     if [ "$SEL" ]; then 
         echo "selected $SEL"
         #distrobox enter "$SEL"
-        open_term "$SEL" "--env TERM=xterm-256color"
+        open_term "$SEL" #"--env TERM=xterm-256color"
     else
         foot
     fi
