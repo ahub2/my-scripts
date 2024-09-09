@@ -16,7 +16,8 @@ sudo dnf5 -y install htop nvtop
 sudo dnf5 -y install mpd --allowerasing
 
 #background stuff needed for scripts, etc.
-sudo dnf5 -y install ImageMagick bat ffmpegthumbnailer file xpdf
+# xpdf gives the pdftotext command for pdf previews
+sudo dnf5 -y install ImageMagick bat ffmpegthumbnailer file xpdf trash-cli
 
 #gui programs
 sudo dnf5 -y install zathura zathura-cb zathura-djvu zathura-pdf-mupdf

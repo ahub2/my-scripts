@@ -2,6 +2,7 @@
 
 help () {
     echo "script to compress/extract files using 7z and unrar"
+    echo "  the following executables are need to be installed for this script: tar 7z unrar"
     echo "    -c [ files/directories ]  =>  compress input directories or files, if only one file is passed, the filename will be used as the archive name. If passing multiple files, surround all filenames with quotes, i.e. compress.sh -c \"file1.txt file2.txt dir1\" "
     echo "    -e [ file ]               =>  extract input file to the current directory"
     echo "    -l [ file ]               =>  print contents of file to stdout"
@@ -11,7 +12,7 @@ help () {
 
 compress() {
     FILES="$@"
-    echo "compressing files: $FILES"
+    echo "compress.sh - compressing files: $FILES"
 
     NUMFILES="$(echo $FILES | wc -w)"
     BASENAME="$(basename $FILES)"
@@ -25,18 +26,18 @@ compress() {
     fi
 
     fn=$fn.7z
-    echo "creating archive $fn"
+    echo "compress.sh - creating archive $fn"
 
     if ! [ -e $fn ]; then
         for F in $FILES 
         do 
-            echo "adding file $F to archive"
+            echo "compress.sh - adding file $F to archive"
             7z a $fn $F
 
         done
 
     else
-        echo "ERROR file: $fn exists, exiting."
+        echo "compress.sh - ERROR file: $fn exists, exiting."
         exit 1
     fi
 
@@ -45,12 +46,23 @@ compress() {
 
 extract() {
     FILE="$@"
-    echo "extracting: [$FILE]"
+    echo "compress.sh - extracting: [$FILE]"
 
     case "$FILE" in 
         *.rar) 
             unrar x "$FILE"
             exit 0
+            ;;
+
+        *.tar.gz)
+            EXTRACT_DIR="$(basename $FILE .tar.gz)"
+            if ! [ -d "$EXTRACT_DIR" ]; then
+                mkdir "$EXTRACT_DIR"
+                tar xvzf "$FILE" -C "$EXTRACT_DIR"
+                exit 0
+            else 
+                echo "ERROR: compress.sh - $EXTRACT_DIR already exists, skipping extraction."
+            fi
             ;;
         *) 
             7z x "$FILE"
@@ -61,7 +73,7 @@ extract() {
 }
 
 list() {
-    FILE="$1"
+    FILE="$@"
 
     case "$FILE" in 
         *.rar) 
