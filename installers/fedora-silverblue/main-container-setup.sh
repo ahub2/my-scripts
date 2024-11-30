@@ -8,7 +8,8 @@ sudo dnf5 copr enable pennbauman/ports
 sudo dnf copr enable derisis13/ani-cli
 
 #media tools 
-sudo dnf5 -y install mpv ncmpcpp yt-dlp yt-dlp-zsh-completion chafa imv ani-cli
+sudo dnf5 -y install mpv ncmpcpp yt-dlp yt-dlp-zsh-completion chafa imv
+sudo dnf5 -y install  ani-cli
 
 #cli tools 
 sudo dnf5 -y  install lf neovim htop nvtop 
@@ -20,7 +21,7 @@ sudo dnf5 -y install mpd --allowerasing
 
 #background stuff needed for scripts, etc.
 # xpdf gives the pdftotext command for pdf previews
-sudo dnf5 -y install ImageMagick bat ffmpegthumbnailer file xpdf trash-cli
+sudo dnf5 -y install ImageMagick bat ffmpegthumbnailer file xpdf trash-cli srm
 
 #gui programs
 sudo dnf5 -y install zathura zathura-cb zathura-djvu zathura-pdf-mupdf
@@ -42,3 +43,12 @@ sudo mkdir /run/dbus
 
 #misc needed for random programs
 sudo dnf5 -y install libatomic gstreamer1-vaapi GConf2 zenity
+
+
+#install usoc mpv config
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/tomasklaen/uosc/HEAD/installers/unix.sh)"
+
+# install fastanime
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv tool install "fastanime[mpv]"
+
